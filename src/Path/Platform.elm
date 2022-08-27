@@ -15,14 +15,14 @@ import Path.Win32 as Win32
 
 
 {-| Represents a platform used for parsing the strings, either Win32 or Posix.
-Create or infer platforms with `win32`, `posix` and `fromSeparator`
+Create or infer platforms with [`win32`](#win32), [`posix`](#posix) and [`fromSeparator`](#fromSeparator)
 -}
 type alias Platform =
     Internal.Platform
 
 
 {-| Win32. Use when you want to hardcode platform into Path functions.
-If you are unsure what platform you need, use `fromSeparator` to infer it.
+If you are unsure what platform you need, use [`fromSeparator`](#fromSeparator) to infer it.
 
     Path.Platform.fromString Path.Platform.win32 "c:/A/B/C.elm"
 
@@ -33,7 +33,7 @@ win32 =
 
 
 {-| Posix. Use when you want to hardcode platform into Path functions.
-If you are unsure what platform you need, use `fromSeparator` to infer it.
+If you are unsure what platform you need, use [`fromSeparator`](#fromSeparator) to infer it.
 
     Path.Platform.fromString Path.Platform.posix "/A/B/C.elm"
 
@@ -82,9 +82,9 @@ fromSeparator separator_ =
 
 {-| Delimiter of a platform.
 
-    Path.Platform.separator Path.Platform.posix == ":"
+    Path.Platform.delimiter Path.Platform.posix == ":"
 
-    Path.Platform.separator Path.Platform.win32 == ";"
+    Path.Platform.delimiter Path.Platform.win32 == ";"
 
 -}
 delimiter : Platform -> String

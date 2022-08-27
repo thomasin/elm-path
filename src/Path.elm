@@ -23,7 +23,7 @@ import String.Extra as String
 
 
 {-| Represents a platform used for parsing the strings, either Win32 or Posix.
-Create or infer platforms with `Path.Platform`
+Create or infer platforms with [`Path.Platform`](Path-Platform)
 -}
 type alias Platform =
     Internal.Platform
@@ -50,10 +50,10 @@ separator (Internal.Path platform_ _) =
 
 {-| Get the delimiter of a path.
 
-    Result.map Path.platform (Path.fromString Path.Platform.posix "/static/images/image.jpeg/" ]) == Ok ":"
-    Result.map Path.platform (Path.fromString Path.Platform.posix "../..//.///foo") == Ok ":"
-    Result.map Path.platform (Path.fromString Path.Platform.win32 "./x/b/..//b/c.prod.js") == Ok ";"
-    Result.map Path.platform (Path.fromString Path.Platform.posix "./x/b/..//b/.hidden") == Ok ":"
+    Result.map Path.delimiter (Path.fromString Path.Platform.posix "/static/images/image.jpeg/" ]) == Ok ":"
+    Result.map Path.delimiter (Path.fromString Path.Platform.posix "../..//.///foo") == Ok ":"
+    Result.map Path.delimiter (Path.fromString Path.Platform.win32 "./x/b/..//b/c.prod.js") == Ok ";"
+    Result.map Path.delimiter (Path.fromString Path.Platform.posix "./x/b/..//b/.hidden") == Ok ":"
 
 -}
 delimiter : Path -> String
@@ -167,7 +167,7 @@ fromString platform_ str =
 
 {-| Create a path from a list of strings. Some notes:
 
-  - If passed a path with a root, it will _not_ overwrite previous segments, it will just add the root to the path. This is similar to Node path behaviour and different from Python os.path behaviour.
+  - If passed a path with a root, it will _not_ overwrite previous segments, it will add the root to the path. This is similar to Node path behaviour and different from Python os.path behaviour.
 
   - If passed a valid root as the first element in the list, will not add a separator between the first and second elements
 
