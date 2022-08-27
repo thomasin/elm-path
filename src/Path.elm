@@ -175,13 +175,15 @@ fromString platform_ str =
 
   - Won't ignore spaces!
 
-    Result.map Path.toString (Path.fromList Path.Platform.posix [ "/static", "images", "/image.jpeg" ]) == Ok "/static/images/image.jpeg"
-    Result.map Path.toString (Path.fromList Path.Platform.posix [ "", "..", "..", "/foo" ]) == Ok "../../foo"
-    Result.map Path.toString (Path.fromList Path.Platform.posix [ ".", "x/b", "..", "/b/c.js" ]) == Ok "x/b/c.js"
-    Result.map Path.toString (Path.fromList Path.Platform.win32 [ "a:", "\\b" ][ "a:", "\b" ][ "a:", "\\b" ]) == Ok "a:\\b"
-    Result.map Path.toString (Path.fromList Path.Platform.win32 [ "a:", "b\\c" ][ "a:", "b\c" ][ "a:", "b\\c" ]) == Ok "a:b\\c"
-    Result.map Path.toString (Path.fromList Path.Platform.posix []) == Ok "."
-    Result.map Path.toString (Path.fromList Path.Platform.posix [ " ", "foo" ]) == Ok " /foo"
+```elm
+Result.map Path.toString (Path.fromList Path.Platform.posix [ "/static", "images", "/image.jpeg" ]) == Ok "/static/images/image.jpeg"
+Result.map Path.toString (Path.fromList Path.Platform.posix [ "", "..", "..", "/foo" ]) == Ok "../../foo"
+Result.map Path.toString (Path.fromList Path.Platform.posix [ ".", "x/b", "..", "/b/c.js" ]) == Ok "x/b/c.js"
+Result.map Path.toString (Path.fromList Path.Platform.win32 [ "a:", "\\b" ][ "a:", "\b" ][ "a:", "\\b" ]) == Ok "a:\\b"
+Result.map Path.toString (Path.fromList Path.Platform.win32 [ "a:", "b\\c" ][ "a:", "b\c" ][ "a:", "b\\c" ]) == Ok "a:b\\c"
+Result.map Path.toString (Path.fromList Path.Platform.posix []) == Ok "."
+Result.map Path.toString (Path.fromList Path.Platform.posix [ " ", "foo" ]) == Ok " /foo"
+```
 
 -}
 fromList : Platform -> List String -> Result String Path
